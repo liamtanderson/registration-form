@@ -22,7 +22,12 @@ app.get('/register', (req, res) => {
 
 	  res.render('register')
 })
-app.listen(2000, () => {
+
+app.get('/', (req, res)=> {
+
+	 res.render('register')
+})
+app.listen(process.env.PORT || 2000, () => {
 
 	console.log('Server Running')
 })
