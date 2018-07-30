@@ -33,6 +33,11 @@ app.get('/', (req, res)=> {
 	 res.render('register')
 })
 
+app.post('/hello', (req, res)=>{
+
+	res.send({name:'sandesh'})
+})
+
 // POST request to /register to process the posted form data and pass JS objects to the display page and embed JS to the display page
 
 app.post('/register', (req, res)=> {
@@ -67,10 +72,11 @@ app.post('/register', (req, res)=> {
 // set up server port for deployment and test environments
 
 
+
 app.listen(process.env.PORT || 2000, () => {
 
 	console.log('Server Running')
 })
 
-
+module.exports.app = app;
 

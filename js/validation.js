@@ -17,9 +17,15 @@ return false;
 var first_errors = document.getElementById('first_errors')
 var last_errors = document.getElementById('last_errors')
 var pass_errors = document.getElementById('pass_errors')
+var agreedToCondition = document.getElementById('terms')
+
 
 if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1 
-|| pass_errors.childNodes.length >=1) return false
+|| pass_errors.childNodes.length >=1) {
+
+  return false
+
+}
 
   if(!(agreedToCondition.checked === true)) {
 
@@ -27,7 +33,13 @@ if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1
     return false
   }
 
-  if(document.getElementById('zipcode').style.color ==='red') return false
+  if(document.getElementById('zipcode').style.color ==='red'){
+     
+     console.log('zip code')
+    return false
+
+
+  } 
 
 
 }
@@ -53,7 +65,6 @@ return false;
 }
 }
 
-var agreedToCondition = document.getElementById('terms')
 
 // Remove the spaces from the entered and generated code
 function removeSpaces(string){
@@ -79,7 +90,7 @@ document.getElementById('first').onkeyup = ()=> {
 
 
 
-       if(firstname.length <= 2 ||  firstname.length >= 25 || firstname.match(pattern) ){
+       if(firstname.length < 2 ||  firstname.length > 40 || firstname.match(pattern) ){
 
                     
            // set empty string for the symbol everytime a key is pressed
