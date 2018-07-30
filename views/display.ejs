@@ -1,8 +1,17 @@
+<html>
+
+<head>
+
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
     crossorigin="anonymous">
+
+</head>
+
+
+<body>
 
 <div class="jumbotron">
   <h1 class="display-4">Hello, <%=firstname%></h1>
@@ -10,8 +19,37 @@
   <hr class="my-4">
  <p>First Name: <%=firstname%> </p>
  <p>Last Name: <%=lastname%></p>
- <p>Address: <%=address%></p>
+ <p>Address: <%=address%>, <%=zipcode%></p>
  <p>Yearly Income:  <%=income%></p>
  <p>Education Level: <%=education%></p>
   
 </div>
+
+<h1 class="display-4" style="text-align:center;"> Your address </h1>
+  <hr class="my-4">
+
+<div class="container" id="map" style="width:400px;height:400px;"></div>
+
+
+
+
+<script>
+
+function myMap() {
+var mapOptions = {
+    center: new google.maps.LatLng(<%=lat%>, <%=lng%>),
+    zoom: 20,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiug74pt7jFl5VYdDfXhFLYJdkZ1maj2Y&callback=myMap"></script>
+
+
+</body>
+
+
+
+</html>

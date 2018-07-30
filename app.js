@@ -7,6 +7,8 @@ const path = require('path') // node.js native path module to join directories c
 const app = express() // instantiating the instance of the express package as app
 
 
+const request = require('request')
+
 app.use(express.static(path.join(__dirname, 'js'))) // using express middleware to server js as static directory
 
 app.use(bodyParser({urlencoded: true})) // middleware to support url parsing in body parser middleware
@@ -43,8 +45,23 @@ app.post('/register', (req, res)=> {
 	let address = req.body.address
 	let income = req.body.income
 	let education = req.body.education
+	let zipcode = req.body.zipcode
+	let lat = ''
+	let lng = ''
 
-	 res.render('display', {firstname: firstname, lastname: lastname, address: address, income: income, education: education})
+	console.log(req.body.city)
+	console.log(req.body.state)
+
+	request('https://maps.googleapis.com/maps/api/geocode/json?address='+ req.body.city + ','+req.body.state + '&key=AIzaSyCiug74pt7jFl5VYdDfXhFLYJdkZ1maj2Y', function(err, response, body){
+	 lat = (JSON.parse(body).results[0].geometry.location.lat)
+	 lng = (JSON.parse(body).results[0].geometry.location.lng)
+
+	console.log(lat)
+	console.log(lng)
+	 res.render('display', {firstname: firstname, lastname: lastname, address: address, income: income, education: education, zipcode: zipcode, lat: lat, lng: lng})
+})
+
+
 })
 
 // set up server port for deployment and test environments

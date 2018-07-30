@@ -27,6 +27,8 @@ if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1
     return false
   }
 
+  if(document.getElementById('zipcode').style.color ==='red') return false
+
 
 }
 
@@ -307,3 +309,33 @@ var errors = document.getElementById('pass_errors')
          }
 
 }
+
+
+     document.getElementById('postal_code').onkeyup = ()=> {
+
+      var zipcode = document.getElementById('postal_code').value
+
+
+      var error = false;
+
+            for(var i=0; i < zipcode.length; i++) {
+
+               if(isNaN(parseInt(zipcode[i])) || zipcode.length !== 5)
+
+                error = true;
+          }
+     
+
+     if(error) document.getElementById('zipcode').style.color = 'red'
+      if(!error) document.getElementById('zipcode').style.color = 'black'
+
+
+}
+
+
+
+
+
+
+
+
