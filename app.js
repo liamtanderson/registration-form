@@ -53,17 +53,23 @@ app.post('/register', (req, res)=> {
 	let zipcode = req.body.zipcode
 	let lat = ''
 	let lng = ''
+	let street_number = req.body.street
+	let street_name = req.body.street_name
+	let state = req.body.state
+	let phone = req.body.phone
 
-	console.log(req.body.city)
-	console.log(req.body.state)
 
-	request('https://maps.googleapis.com/maps/api/geocode/json?address='+ req.body.city + ','+req.body.state + '&key=AIzaSyCiug74pt7jFl5VYdDfXhFLYJdkZ1maj2Y', function(err, response, body){
+	console.log(req.body)
+
+	
+
+	request('https://maps.googleapis.com/maps/api/geocode/json?address='+ street_number + ',' + street_name + ','+ req.body.city + ','+req.body.state + '&key=AIzaSyCiug74pt7jFl5VYdDfXhFLYJdkZ1maj2Y', function(err, response, body){
 	 lat = (JSON.parse(body).results[0].geometry.location.lat)
 	 lng = (JSON.parse(body).results[0].geometry.location.lng)
 
 	console.log(lat)
 	console.log(lng)
-	 res.render('display', {firstname: firstname, lastname: lastname, address: address, income: income, education: education, zipcode: zipcode, lat: lat, lng: lng})
+	 res.render('display', {firstname: firstname, lastname: lastname, address: address, income: income, education: education, zipcode: zipcode, lat: lat, lng: lng, phone: phone})
 })
 
 

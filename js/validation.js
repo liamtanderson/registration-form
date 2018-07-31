@@ -20,9 +20,14 @@ var pass_errors = document.getElementById('pass_errors')
 var agreedToCondition = document.getElementById('terms')
 
 
-if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1 
-|| pass_errors.childNodes.length >=1) {
+console.log("pass Node: " + pass_errors.childNodes.length )
+console.log("first_errors: " + first_errors.childNodes)
+console.log('last_error: ' + last_errors.childNodes.length)
 
+if(first_errors.childNodes.length > 1 || last_errors.childNodes.length > 1
+|| pass_errors.childNodes.length > 1) {
+
+console.log('here')
   return false
 
 }
@@ -40,7 +45,11 @@ if(first_errors.childNodes.length >=1 || last_errors.childNodes.length >=1
 
 
   } 
+    
+    if(document.getElementById('phone').style.color==='red'){
 
+        return false
+    }
 
 }
 
@@ -112,7 +121,7 @@ document.getElementById('first').onkeyup = ()=> {
         text.appendChild(document.createTextNode('- First name'))
         var li_one = document.createElement('li')
         var li_two = document.createElement('li')
-        li_one.appendChild(document.createTextNode('should be more than 2 chars'))
+        li_one.appendChild(document.createTextNode('should be >= 2 chars'))
         li_two.appendChild(document.createTextNode('should be A-Z or a-z'))
 
         // check if the child node is already appended to avoid repitition of the error messages on the form
@@ -162,7 +171,7 @@ document.getElementById('last').onkeyup = ()=> {
         var pattern = /[^a-z]/i
 
 
-       if(lastname.length <= 2 || lastname.length >=25 || lastname.match(pattern) ){
+       if(lastname.length < 2 || lastname.length >=25 || lastname.match(pattern) ){
 
         document.getElementById('last_label').style.color = 'red'
         document.getElementById('symbol_last').innerHTML = ''
@@ -208,6 +217,9 @@ var errors = document.getElementById('pass_errors')
 
 // check to see if password length is at least 8 characters long
 
+        var pattern = /[a-z]/i
+
+
 
   var special = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
 
@@ -221,7 +233,9 @@ var errors = document.getElementById('pass_errors')
         console.log("password: " + pass)
         console.log("isAlpha : " + isAlphaNumeric)
 
-           if(pass.length < 8 || !isAlphaNumeric) {
+        console.log("pass_match: " + pass.match(pattern))
+
+           if((pass.length < 8 || pass.length > 40) || !isAlphaNumeric || !pass.match(pattern)) {
 
 
         document.getElementById('psw_label').style.color = 'red'   
@@ -341,6 +355,32 @@ var errors = document.getElementById('pass_errors')
       if(!error) document.getElementById('zipcode').style.color = 'black'
 
 
+}
+
+
+
+document.getElementById('phone_number').onkeyup = ()=> {
+
+  console.log("here")
+
+     var phone = document.getElementById('phone_number').value
+
+     var noNumber = false
+
+     for(var i=0; i < phone.length; i++){
+         if(isNaN(parseInt(phone[i]))){
+              
+              noNumber = true
+              break;
+         } 
+     }
+           
+           console.log('not a number' + noNumber)
+   if(noNumber || phone.length !== 10)document.getElementById('phone').style.color = 'red'
+    else document.getElementById('phone').style.color = 'black'
+
+
+   
 }
 
 

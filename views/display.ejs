@@ -20,12 +20,13 @@
  <p>First Name: <%=firstname%> </p>
  <p>Last Name: <%=lastname%></p>
  <p>Address: <%=address%>, <%=zipcode%></p>
+ <p>Phone: <%=phone%></p>
  <p>Yearly Income:  <%=income%></p>
  <p>Education Level: <%=education%></p>
   
 </div>
 
-<h1 class="display-4" style="text-align:center;"> Your address </h1>
+<h3 class="display-4" style="text-align:center;"><%=address%></h3>
   <hr class="my-4">
 
 <div class="container" id="map" style="width:400px;height:400px;"></div>
@@ -38,7 +39,7 @@
 function myMap() {
 var mapOptions = {
     center: new google.maps.LatLng(<%=lat%>, <%=lng%>),
-    zoom: 10,
+    zoom: 18,
     mapTypeId: google.maps.MapTypeId.HYBRID
 }
 var map = new google.maps.Map(document.getElementById("map"), mapOptions);
