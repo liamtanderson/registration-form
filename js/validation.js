@@ -18,6 +18,7 @@ var first_errors = document.getElementById('first_errors')
 var last_errors = document.getElementById('last_errors')
 var pass_errors = document.getElementById('pass_errors')
 var agreedToCondition = document.getElementById('terms')
+var email_errors = document.getElementById('email_errors')
 
 
 console.log("pass Node: " + pass_errors.childNodes.length )
@@ -25,7 +26,7 @@ console.log("first_errors: " + first_errors.childNodes)
 console.log('last_error: ' + last_errors.childNodes.length)
 
 if(first_errors.childNodes.length > 1 || last_errors.childNodes.length > 1
-|| pass_errors.childNodes.length > 1) {
+|| pass_errors.childNodes.length > 1 || email_errors.childNodes.length > 1) {
 
 console.log('here')
   return false
@@ -383,7 +384,47 @@ document.getElementById('phone_number').onkeyup = ()=> {
    
 }
 
+document.getElementById('email').onkeyup = function () {
 
+     var email = document.getElementById('email').value
+     var errors = document.getElementById('email_errors')
+
+      if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+              
+         document.getElementById('email_label').style.color = 'red'   
+        document.getElementById('symbol_email').innerHTML = ''
+        var text = document.createElement('b')
+        text.appendChild(document.createTextNode('- Email'))
+        var li_one = document.createElement('li')
+
+        li_one.appendChild(document.createTextNode('should be valid'))
+
+        if(errors.childNodes.length <=1 ){
+        
+                errors.appendChild(text) 
+                errors.appendChild(li_one)
+
+      }
+
+      }
+
+      else {
+              
+              document.getElementById('email_label').style.color = 'black'   
+
+            if(document.getElementById('email_errors').childNodes.length > 1) {
+                       
+
+                  while(errors.firstChild) {
+                        errors.removeChild(errors.firstChild)
+                  }
+            }
+            document.getElementById('symbol_email').innerHTML = '&#9989;'
+
+
+      }
+
+}
 
 
 

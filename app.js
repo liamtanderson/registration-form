@@ -57,6 +57,7 @@ app.post('/register', (req, res)=> {
 	let street_name = req.body.street_name
 	let state = req.body.state
 	let phone = req.body.phone
+	let email = req.body.email
 
 
 	console.log(req.body)
@@ -69,7 +70,7 @@ app.post('/register', (req, res)=> {
 
 	console.log(lat)
 	console.log(lng)
-	 res.render('display', {firstname: firstname, lastname: lastname, address: address, income: income, education: education, zipcode: zipcode, lat: lat, lng: lng, phone: phone})
+	 res.render('display', {firstname: firstname, lastname: lastname, address: address, income: income, education: education, zipcode: zipcode, lat: lat, lng: lng, phone: phone, email:email})
 })
 
 
