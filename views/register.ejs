@@ -152,41 +152,11 @@
         <div class="form-group">
           <label for="address">Address</label>
           <input id="autocomplete" onFocus="geolocate()" type="text" name="address" class="form-control"  required>
-
         </div>
-
-    <table id="address">
-      <tr>
-        <td class="label">Street address</td>
-        <td class="slimField"><input class="field" id="street_number"
-              disabled="true" name="street" required></input></td>
-        <td class="wideField" colspan="2"><input class="field" id="route"
-              disabled="true" name="street_name" required></input></td>
-      </tr>
-      <tr>
-        <td class="label">* City</td>
-        <!-- Note: Selection of address components in this example is typical.
-             You may need to adjust it for the locations relevant to your app. See
-             https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-        -->
-        <td class="wideField" colspan="3"><input class="field" id="locality"
-              disabled="true" name="city" required></input></td>
-      </tr>
-      <tr>
-        <td class="label">* State</td>
-        <td class="slimField"><input class="field"
-              id="administrative_area_level_1" disabled="true" name="state" required></input></td>
-        <td class="label" id="zipcode">Zip code</td>
-        <td class="wideField"><input class="field" id="postal_code"
-              disabled="true" name="zipcode" required></input></td>
-      </tr>
-      <tr>
-        <td class="label">Country</td>
-        <td class="wideField" colspan="3"><input class="field"
-              id="country" disabled="true" required></input></td>
-      </tr>
-    </table>
-
+        <div class="form-group">
+          <label for="address">Address Line 2</label>
+          <input id="autocomplete" onFocus="geolocate()" type="text" name="address" class="form-control"  required>
+        </div>
 
 <div class="form-group">
           <label for="phone" id="phone">Phone</label>
