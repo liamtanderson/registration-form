@@ -40,7 +40,7 @@ app.post('/hello', (req, res)=>{
 
 app.post('/congrats', (req, res)=>{
 
-	res.sendFile('congrats.html');
+	res.sendFile(path.join(__dirname+'/congrats.html'));
 })
 // POST request to /register to process the posted form data and pass JS objects to the display page and embed JS to the display page
 
