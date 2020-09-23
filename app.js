@@ -38,6 +38,10 @@ app.post('/hello', (req, res)=>{
 	res.send({name:'sandesh'})
 })
 
+app.post('/congrats', (req, res)=>{
+
+	res.sendFile('congrats.html');
+})
 // POST request to /register to process the posted form data and pass JS objects to the display page and embed JS to the display page
 
 app.post('/register', (req, res)=> {
